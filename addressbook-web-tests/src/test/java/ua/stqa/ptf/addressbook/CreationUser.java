@@ -1,4 +1,4 @@
-package com.example.tests;
+package ua.stqa.ptf.addressbook;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
@@ -21,10 +21,7 @@ public class CreationUser {
     driver = new ChromeDriver();
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-  }
 
-  @Test
-  public void testCreationUser() throws Exception {
     driver.get("http://localhost/addressbook/");
     driver.findElement(By.name("user")).click();
     driver.findElement(By.name("user")).clear();
@@ -33,6 +30,11 @@ public class CreationUser {
     driver.findElement(By.name("pass")).clear();
     driver.findElement(By.name("pass")).sendKeys("secret");
     driver.findElement(By.xpath("//input[@value='Login']")).click();
+  }
+
+  @Test
+  public void testCreationUser() throws Exception {
+
     driver.findElement(By.linkText("add new")).click();
     driver.findElement(By.name("firstname")).click();
     driver.findElement(By.name("firstname")).clear();
