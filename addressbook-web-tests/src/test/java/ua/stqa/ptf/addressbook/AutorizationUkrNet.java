@@ -10,7 +10,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class CreationGroupTest {
+public class AutorizationUkrNet {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -24,29 +24,16 @@ public class CreationGroupTest {
   }
 
   @Test
-  public void testCreationGroup() throws Exception {
-    driver.get("http://localhost/addressbook/");
-    driver.findElement(By.name("user")).click();
-    driver.findElement(By.name("user")).clear();
-    driver.findElement(By.name("user")).sendKeys("admin");
-    driver.findElement(By.id("LoginForm")).click();
-    driver.findElement(By.name("pass")).click();
-    driver.findElement(By.name("pass")).clear();
-    driver.findElement(By.name("pass")).sendKeys("secret");
-    driver.findElement(By.xpath("//input[@value='Login']")).click();
-    driver.findElement(By.linkText("groups")).click();
-    driver.findElement(By.xpath("(//input[@name='new'])[2]")).click();
-    driver.findElement(By.name("group_name")).click();
-    driver.findElement(By.name("group_name")).clear();
-    driver.findElement(By.name("group_name")).sendKeys("GroupName4");
-    driver.findElement(By.name("group_header")).click();
-    driver.findElement(By.name("group_header")).clear();
-    driver.findElement(By.name("group_header")).sendKeys("test4");
-    driver.findElement(By.name("group_footer")).click();
-    driver.findElement(By.name("group_footer")).clear();
-    driver.findElement(By.name("group_footer")).sendKeys("test4");
-    driver.findElement(By.name("submit")).click();
-    driver.findElement(By.linkText("group page")).click();
+  public void testAutorizationUkrNet() throws Exception {
+    driver.get("https://www.ukr.net/");
+    driver.findElement(By.id("id-input-login")).click();
+    driver.findElement(By.id("id-input-login")).clear();
+    driver.findElement(By.id("id-input-login")).sendKeys("dmarik@ukr.net");
+    driver.findElement(By.id("id-input-password")).click();
+    driver.findElement(By.id("id-input-password")).clear();
+    driver.findElement(By.id("id-input-password")).sendKeys("marikrd79");
+    driver.findElement(By.xpath("//div[6]/button")).click();
+    driver.findElement(By.linkText("Вхідні")).click();
   }
 
   @AfterClass(alwaysRun = true)
