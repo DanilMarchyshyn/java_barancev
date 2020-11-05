@@ -103,4 +103,12 @@ public class TestBase {
         acceptNextAlert = true;
       }
     }
+
+    protected void deleteSelectedGroup() {
+      driver.findElement(By.xpath("(//input[@name='delete'])[2]")).click();
+    }
+
+    protected void selectGroup() {
+      driver.findElement(By.xpath("(//input[@name='selected[]'])[8]")).click();
+    }
 }
