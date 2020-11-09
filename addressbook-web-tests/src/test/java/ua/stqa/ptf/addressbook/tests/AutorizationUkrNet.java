@@ -1,16 +1,16 @@
-package ua.stqa.ptf.addressbook;
+package ua.stqa.ptf.addressbook.tests;
 
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
-
+import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.Assert.fail;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.*;
+import static org.testng.Assert.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
-public class AutorizationSmartTrader {
+public class AutorizationUkrNet {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -19,20 +19,21 @@ public class AutorizationSmartTrader {
   @BeforeClass(alwaysRun = true)
   public void setUp() throws Exception {
     driver = new ChromeDriver();
+    baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void testAutorizationSmartTrader() throws Exception {
-    driver.get("https://smarttrader.com/login/");
-    driver.findElement(By.name("username")).click();
-    driver.findElement(By.name("password")).clear();
-    driver.findElement(By.name("password")).sendKeys("P@ssw0rd");
-    driver.findElement(By.name("username")).clear();
-    driver.findElement(By.name("username")).sendKeys("d.marchychyn.test@gmail.com");
-    driver.findElement(By.name("authenticate")).click();
-    driver.findElement(By.xpath("(//a[contains(text(),'Place Order')])[3]")).click();
-    driver.findElement(By.id("placeOrderBtn")).click();
+  public void testAutorizationUkrNet() throws Exception {
+    driver.get("https://www.ukr.net/");
+    driver.findElement(By.id("id-input-login")).click();
+    driver.findElement(By.id("id-input-login")).clear();
+    driver.findElement(By.id("id-input-login")).sendKeys("dmarik@ukr.net");
+    driver.findElement(By.id("id-input-password")).click();
+    driver.findElement(By.id("id-input-password")).clear();
+    driver.findElement(By.id("id-input-password")).sendKeys("marikrd79");
+    driver.findElement(By.xpath("//div[6]/button")).click();
+    driver.findElement(By.linkText("Вхідні")).click();
   }
 
   @AfterClass(alwaysRun = true)
