@@ -7,22 +7,21 @@ import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.fail;
 
-public class ApplicationsManager extends NavigationHelper {
+public class ApplicationsManager {
+    WebDriver driver;
 
-    public WebDriver driver;
-
+    private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
 
-    private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
     public void init() {
         driver = new ChromeDriver();
-        baseUrl = "https://www.google.com/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get("http://localhost/addressbook/");
         groupHelper = new GroupHelper(driver);
+        navigationHelper = new NavigationHelper(driver);
         login("admin", "secret");
     }
 
@@ -34,10 +33,6 @@ public class ApplicationsManager extends NavigationHelper {
       driver.findElement(By.name("pass")).clear();
       driver.findElement(By.name("pass")).sendKeys(password);
       driver.findElement(By.xpath("//input[@value='Login']")).click();
-    }
-
-    public void gotoGroupPage() {
-      driver.findElement(By.linkText("groups")).click();
     }
 
     public void stop() {
@@ -83,5 +78,9 @@ public class ApplicationsManager extends NavigationHelper {
 
     public GroupHelper getGroupHelper() {
         return groupHelper;
+    }
+
+    public NavigationHelper getNavigationHelper() {
+        return navigationHelper;
     }
 }
