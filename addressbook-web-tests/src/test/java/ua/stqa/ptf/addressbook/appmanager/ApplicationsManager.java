@@ -10,6 +10,7 @@ import static org.testng.Assert.fail;
 public class ApplicationsManager {
     WebDriver driver;
 
+    private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
 
@@ -22,17 +23,8 @@ public class ApplicationsManager {
         driver.get("http://localhost/addressbook/");
         groupHelper = new GroupHelper(driver);
         navigationHelper = new NavigationHelper(driver);
-        login("admin", "secret");
-    }
-
-    private void login(String username, String password) {
-      driver.findElement(By.name("user")).click();
-      driver.findElement(By.name("user")).clear();
-      driver.findElement(By.name("user")).sendKeys(username);
-      driver.findElement(By.name("pass")).click();
-      driver.findElement(By.name("pass")).clear();
-      driver.findElement(By.name("pass")).sendKeys(password);
-      driver.findElement(By.xpath("//input[@value='Login']")).click();
+        sessionHelper = new SessionHelper(driver);
+        sessionHelper.login("admin", "secret");
     }
 
     public void stop() {
