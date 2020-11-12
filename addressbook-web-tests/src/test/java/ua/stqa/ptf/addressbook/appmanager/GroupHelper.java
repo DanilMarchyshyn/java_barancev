@@ -25,13 +25,13 @@ public class GroupHelper extends HelperBase {
     }
 
     public void initGroupCreation() {
-        //click(By.xpath("(//input[@name='new'])[2]"));
-        click(By.linkText("new"));
+        click(By.xpath("(//input[@name='new'])[2]"));
+        //click(By.linkText("new"));
     }
 
     public void deleteSelectedGroup() {
-        //click(By.xpath("(//input[@name='delete'])[2]"));
-        click(By.name("delete"));
+        click(By.xpath("(//input[@name='delete'])[2]"));
+        //click(By.name("delete"));
     }
 
     public void selectGroup() {
