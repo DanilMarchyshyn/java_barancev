@@ -1,7 +1,6 @@
 package ua.stqa.ptf.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 
 public class HelperBase {
     protected WebDriver driver;
@@ -19,4 +18,5 @@ public class HelperBase {
         driver.findElement(locator).clear();
         driver.findElement(locator).sendKeys(text);
     }
+
 }

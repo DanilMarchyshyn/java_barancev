@@ -35,6 +35,7 @@ public class ApplicationsManager {
         }
     }
 
+
     private boolean isElementPresent(By by) {
       try {
         driver.findElement(by);
@@ -67,6 +68,7 @@ public class ApplicationsManager {
         acceptNextAlert = true;
       }
     }
+
 
     public GroupHelper getGroupHelper() {
         return groupHelper;
